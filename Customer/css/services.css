@@ -1,0 +1,135 @@
+.button-container{
+margin-top:150px;
+margin-bottom : 100px;
+}
+
+.tab{
+text-align: center;
+}
+
+button{
+
+    position: relative;
+    transform: translateY(0.1rem);
+    font-size: 1rem;
+    border-radius: 1rem;
+    padding-left: 0rem;
+    padding-right: 0rem;    
+    background-color: white;
+    border: 0.2rem solid grey;
+    color: black;
+    width: 13rem;
+    height: 4rem;
+    transform: translateX(0.5rem);
+    margin-top: 1rem;
+    display: inline-block;
+    cursor:pointer;
+    transition: transform 0.5s;
+
+}
+button:hover{
+    
+    transform: translateY(5px);
+}
+
+.menu-button{
+ display: flex; /* This makes the container a flexbox */
+ justify-content: center; /* This centers the buttons horizontally */
+ display: inline-block;
+}
+
+.menu-button button {
+  margin: 2 10px; /* This adds a margin between the buttons */
+}
+
+.row{
+ display:flex;
+height:90%;
+align-items:center;
+}
+
+.col{
+flex-basis: 50%;
+}
+.cardholder{
+    display: flex;
+}
+.card{
+width:43.75rem;
+height: 31.25rem;
+display: inline-block;
+border-radius: 10px;
+padding: 15px 25px;
+box-sizing: border-box;
+cursor: pointer;
+margin: 10px 15px;
+background-image:url(../images/road-assistance.jpg);
+background-position: center;
+background-size : cover;
+transition: transform 0.5s;
+}
+
+.card:hover{
+transform: translateY(10px);
+}
+
+.Road-Assistance-msg,
+.Extra-driver-msg,
+.safety-seat-msg,
+.GPS-support-msg,
+.Terms-and-conditions-msg,
+.Privacy-policy-msg,
+.FAQ-msg{
+    border-radius: 1rem;
+    font-weight: 800;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5); /* set a semi-transparent background color */
+    backdrop-filter: blur(5px); /* add a blur effect to the background */
+   /* add some padding to the section to make the content more readable */
+    padding: 1rem;
+    margin-top: 1rem;
+    width : 100%;
+    font-weight: bold;
+    
+   
+}
+.FAQ-msg {
+text-align: left;
+ background-color:#D9D3CB;
+}
+
+.img1 {
+background-image:url(../images/road-assistance.jpg);
+}
+
+.img2 {
+background-image:url(../images/extra-driver.jpg);
+}
+
+.img3 {
+background-image:url(../images/safety-seat.jpg);
+}
+
+.img4 {
+background-image:url(../images/GPS-support.jpg);
+}
+
+/*fleet section*/
+body>section{
+    display: flex;
+    min-height: 50rem;
+    width: 60%;
+    justify-content: flex-end;
+}
+
+.container{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
