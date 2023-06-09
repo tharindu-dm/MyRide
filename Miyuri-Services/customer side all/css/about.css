@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+*{ 
+    margin:0;
+    padding: 0;    
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body{
+    background-image: url(../images/testBG.jpg);
+
+    background-repeat: no-repeat; 
+    background-size: cover;
+    color:dimgrey;
+    flex: 10;
+}
+/*header and navigation*/
+.header{
+    display: flexbox;
+}
+
+header > div, div > img, div > h1 { 
+    display: inline-block;
+}
+
+img { 
+    width: 25rem;
+}
+
+h1 { 
+    color: white; 
+    font-size: 6.5rem;
+}
+
+header{ 
+    margin: 0;
+}
+
+.navigation{
+    float: right;
+    margin-top: 2rem;
+
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    border-top-left-radius: 0.5rem;    
+    border-bottom-left-radius: 0.5rem;
+
+    background-color: transparent;
+    max-height: 5rem;
+}
+
+.navigation ul{
+    display: flex;
+    background-color: black;
+    background-size: cover;
+    border-bottom-left-radius: 1.5rem;
+    border-top-left-radius: 1.5rem;
+}
+
+.navigation ul li{
+    position: relative;
+    list-style: none;
+    font-size: 1.5rem;
+    width: 9rem;
+    height: 9rem;
+    z-index: 1;
+}
+
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    font-size: 2rem;
+    
+    transition: 0.35s;
+    transform: translateY(1.5rem);
+    color: white;
+}
+
+.navigation ul li a .text{
+    font-weight: 500;
+    font-size: 1rem;
+    opacity: 0;
+}
+
+.navigation ul li:hover a .icon{
+    transform: translateY(0.7rem);
+}
+
+.navigation ul li:hover a .text{
+    opacity: 1;
+    transform: translateY(-0.25rem);
+    font-size: 1.5rem;
+    transition: 0.35s;
+}
+
+.navigation ul li.active a .icon, .navigation ul li.active a .text{
+    color: gold;
+}
