@@ -1,0 +1,83 @@
+.Details-Wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    min-height: 31.75rem;
+
+    color: white;
+    text-shadow: 0.1rem 0.1rem  black;
+    backdrop-filter: blur(1rem);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.FS{
+    border-radius: 1rem;
+    border-width: 0.3rem;
+    padding: 0.5rem;    
+}
+
+.resDT-resID-payID{
+    display: flex;
+    padding: 0.2rem;
+    justify-content: space-evenly;
+}
+
+.res-pay-child{    
+    display: flex;
+}
+
+input{
+    border: none;
+    border-bottom: 0.2rem solid dodgerblue;
+    outline: none;
+    padding: 0.1rem;
+    margin-left: 1rem ;
+    border-radius: 0.5rem;
+    background-color: transparent;
+
+    color: white;
+    text-shadow: 0.1rem 0.1rem  black;
+    text-align: center;
+}
+
+.triple-col-set{
+    display: flex;
+    padding: 0.2rem;
+    justify-content: space-evenly;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    padding: 0.1rem;
+}
+
+.det-child{
+    display: flex;
+    justify-content: space-between;
+}
+.det-child>label{
+    margin-right: 1rem;
+}
+
+.sav-edt-del-btns{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.sav-edt-del-btns>div>button{
+    border-radius: 1.2rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    min-width: 6rem;
+}
+
+#msgP{
+    background-color: wheat;
+    color: black;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    text-shadow: none;
+    margin-bottom: 1em;
+}

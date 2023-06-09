@@ -81,7 +81,6 @@ session_start();
                 </ul>
             </div>
         </header>
-
         <section class="forms-And-VehiGrid">
             <div class="side-forms">
                 <div class="wrapper">
@@ -91,7 +90,7 @@ session_start();
                     <input type="radio" name="slider" id="customer">
                     <input type="radio" name="slider" id="payment">
                     <nav>
-                        <label for="vehicle" class="vehicle">Vehicle</label>
+                        <label for="vehicle" class="vehicle"  onclick="fillForm('fill')">Vehicle</label>
                         <label for="essentials" class="essentials">Essentials</label>
                         <label for="customer" class="customer">Customer</label>
                         <label for="payment" class="payment">Payment</label>
@@ -158,6 +157,7 @@ session_start();
                                         // Bring query parameters from PHP URL
                                         const urlParams = new URLSearchParams(window.location.search);
                                         const vcode = urlParams.get('vcode');
+                                        const Type = urlParams.get('Type');
                                         const model = urlParams.get('model');
                                         const freemil = urlParams.get('freemil');
                                         const milecost = urlParams.get('milecost');
@@ -168,6 +168,7 @@ session_start();
 
                                         // Fill the form fields with taken values
                                         document.getElementById('v-code').value = vcode;
+                                        document.getElementById('vehicleSelector').value = Type;
                                         document.getElementById('v-model').value = model;
                                         document.getElementById('v-FreeMil').value = freemil;
                                         document.getElementById('v-mileCost').value = milecost;
@@ -196,7 +197,7 @@ session_start();
                                         <b>011 - 234 5678</b>
                                     </div>
                                     <button type="button" onclick="form_buttonJump('vehicle')"> Next </button>
-                                </form>
+                                <!--</form>-->
                             </div>
                             <div class="content content-1">
                                 <div class="title">Enter reservation details</div>
@@ -483,7 +484,7 @@ session_start();
                                             </div>
                                             <div class="p-cvv">
                                                 <label for="">Enter CVV</label>
-                                                <input type="password" maxlength="4" id="cvv" required>
+                                                <input type="password" maxlength="4" name="cvv" id="cvv" required>
                                             </div>
                                         </div>
                                         <div class="p-warn">
@@ -495,12 +496,11 @@ session_start();
                                             </p>
                                         </div>
                                     </div>
-                                    <button type="submit" name="bookNow"> Book Now </button>
+                                <button type="submit" name="bookNow"> Book Now </button>
                             </div>
                         </form>
                     </section>
                 </div>
-                <!--one button, submit all, using JS-->
             </div>
 
             <div class="vehicleGrid">

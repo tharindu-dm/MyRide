@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyRide|Home</title>
+
+    <link rel="stylesheet" href="../css/reserveDetails.css"/>
+    <link rel="stylesheet" href="../css/headerFooter.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <script src="../js/reserveComp.js"></script>
+</head>
+
+    <body>
+        <div class="Details-Wrapper">
+            <fieldset class="FS">
+                <legend><h2>Reservation Details</h2></legend>
+                <script>
+                    // Bring query parameters from PHP URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const PayID = urlParams.get('PayID');
+
+                    // Fill the form fields with taken values
+                    document.getElementById('payID').value = PayID;
+                </script>
+                <form action="../php/reservationComplete.php" method="POST">
+                    <div class="resDT-resID-payID">
+                        <div class="res-pay-child">
+                            <label for="resID">Reservation ID</label>
+                            <input type="text" id="resID" name="resID" value="#ERROR101" readonly>
+                        </div>
+                        <div class="res-pay-child">
+                            <label for="resDT">Reservation DateTime</label>
+                            <input type="text" id="resDT" name="resDT" value="#ERROR101" readonly>
+                        </div>
+                        <div class="res-pay-child">
+                            <label for="payID">Payment ID</label>
+                            <input type="text" id="payID" name="payID" value="#ERROR101" readonly>
+                        </div>
+                    </div>
+                    <div class="triple-col-set">
+                        <div class="col">
+                                <!--Reserve details-->
+                            <fieldset class="FS">
+                                <legend><h3>Reservation Details</h3></legend>
+                                <div class="dets">
+                                    <div class="det-child">
+                                        <label for="pkLoc">Pickup Location</label>
+                                        <input type="text" id="pkLoc" name="pkLoc" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="pkDate">Pickup Date</label>
+                                        <input type="text" id="pkDate" name="pkDate" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="pkTime">Pickup Time</label>
+                                        <input type="text" id="pkTime" name="pkTime" value="#ERROR101" readonly>
+                                    </div>
+                                    <br>
+                                    <div class="det-child">
+                                        <label for="retLoc">Return Location</label>
+                                        <input type="text" id="retLoc" name="retLoc" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="retDate">Return Date</label>
+                                        <input type="text" id="retDate" name="retDate" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="retTime">Return Time</label>
+                                        <input type="text" id="retTime" name="retTime" value="#ERROR101" readonly>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col">
+                                <!--Customer details-->
+                            <fieldset class="FS">
+                                <legend><h3>Customer Details</h3></legend>
+                                <div class="dets">
+                                    <div class="det-child">
+                                        <label for="cusID">ID</label>
+                                        <input type="text" id="cusID" name="cusID" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusPrefix">Prefix</label>
+                                        <input type="text" id="cusPrefix" name="cusPrefix" value="#ERROR101" readonly>                                   
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusFName">First Name</label>
+                                        <input type="text" id="cusFName" name="cusFName" value="#ERROR101" readonly>                                   
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusLName">Last Name</label>
+                                        <input type="text" id="cusLName" name="cusLName" value="#ERROR101" readonly>                                   
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusNIC">NIC</label>
+                                        <input type="text" id="cusNIC" name="cusNIC" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusAge">Age</label>
+                                        <input type="text" id="cusAge" name="cusAge" value="#ERROR101" readonly
+                                        onblur="nicCheck()">
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="cusEmail">Email</label>
+                                        <input type="text" id="cusEmail" name="cusEmail" value="#ERROR101" readonly
+                                        onblur="emailCheck()">
+                                    </div>
+                                    <br>
+                                    <fieldset class="FS">
+                                        <legend><h5>Driver details</h5></legend>
+                                        <div class="det-child">
+                                            <label for="driNeed">Driver</label> <!--required or customer-->
+                                            <input type="text" id="driNeed" name="driNeed" value="#ERROR101" readonly>
+                                        </div>
+                                        <div class="det-child">
+                                            <label for="retTime">Time</label>
+                                            <input type="text" id="retTime" name="retTime" value="#ERROR101" readonly>
+                                        </div>
+                                        <div class="det-child">
+                                            <label for="retTime">Time</label>
+                                            <input type="text" id="retTime" name="retTime" value="#ERROR101" readonly>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col">
+                                <!--Vehi details-->
+                            <fieldset class="FS">
+                                <legend><h3>Vehicle Details</h3></legend>
+                                <div class="dets">
+                                    <div class="det-child">
+                                        <label for="pkLoc">Pickup Location</label>
+                                        <input type="text" id="pkLoc" name="pkLoc" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="pkDate">Pickup Date</label>
+                                        <input type="text" id="pkDate" name="pkDate" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="pkTime">Pickup Time</label>
+                                        <input type="text" id="pkTime" name="pkTime" value="#ERROR101" readonly>
+                                    </div>
+                                    <br>
+                                    <div class="det-child">
+                                        <label for="retLoc">Return Location</label>
+                                        <input type="text" id="retLoc" name="retLoc" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="retDate">Return Date</label>
+                                        <input type="text" id="retDate" name="retDate" value="#ERROR101" readonly>
+                                    </div>
+                                    <div class="det-child">
+                                        <label for="retTime">Return Time</label>
+                                        <input type="text" id="retTime" name="retTime" value="#ERROR101" readonly>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="sav-edt-del-btns">
+                        <div>
+                            <button id="okay-btn"><a href="../php/home.php">Okay</a></button>
+                            <button id="save-changes-btn" disabled>Save Changes</button>
+                            <button id="edit-btn" type="button" name="edit-det-btn"" onclick="edit(this.name)">Edit</button>
+                        </div>
+                        <div>
+                            <button id="delete-account-btn">Delete Account</button>
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>My Ride</h4>
+                        <ul>
+                            <li><a href="about.html">about us</a></li>
+                            <li><a href="services.html">our services</a></li>
+                            <li><a href="Privacy-policy.html">privacy policy</a></li>
+                            <li><a href="Terms & conditions.html">Terms and conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="contact.html">FAQ</a></li>
+                            <li><a href="contact.html">Email</a></li>
+                            <li><a href="contact.html">telephone</a></li>
+                            <li><a href="contact.html">contact us</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Reservation</a></li>
+                            <li><a href="#">Cancellation</a></li>
+                            <li><a href="#">Customizing bookings</a></li>
+                            <li><a href="#">Payment gateway</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+
+</html>

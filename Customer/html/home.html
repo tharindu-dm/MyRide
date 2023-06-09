@@ -81,8 +81,11 @@ session_start();
                 </ul>
             </div>
         </header>
-
         <section class="forms-And-VehiGrid">
+            
+        <script>
+            fillForm('fill');
+        </script>
             <div class="side-forms">
                 <div class="wrapper">
                     <header>Book My Ride</header>
@@ -91,7 +94,7 @@ session_start();
                     <input type="radio" name="slider" id="customer">
                     <input type="radio" name="slider" id="payment">
                     <nav>
-                        <label for="vehicle" class="vehicle">Vehicle</label>
+                        <label for="vehicle" class="vehicle"  onclick="fillForm('fill')">Vehicle</label>
                         <label for="essentials" class="essentials">Essentials</label>
                         <label for="customer" class="customer">Customer</label>
                         <label for="payment" class="payment">Payment</label>
@@ -114,9 +117,8 @@ session_start();
                                                     <option value="miniBus">Minibus</option>
                                                     <option value="bike">Bike</option>
                                                     <option value="suv">SUV</option>
-                                                </select>                                              
-                                            
-                                                <button class="vehiSearch" type="submit">Search</button>
+                                                </select> 
+                                                <button type="submit" name="searchVehicle">Search</button>
                                         </div>
                                         <div class="v-3col">
                                             <label for="">Model</label>
@@ -125,11 +127,11 @@ session_start();
                                     </div>
                                     <div class="v-3col-container">
                                         <div class="v-3col">
-                                            <label for="">Free Milage</label>
+                                            <label for="">Free Milage (LKR)</label>
                                             <input type="text" id="v-FreeMil" name="v-FreeMil" readonly>
                                         </div>
                                         <div class="v-3col">
-                                            <label for="">Cost per mile</label>
+                                            <label for="">Cost per mile (LKR)</label>
                                             <input type="text" id="v-mileCost" name="v-mileCost" readonly>
                                         </div>
                                     </div>
@@ -159,6 +161,7 @@ session_start();
                                         // Bring query parameters from PHP URL
                                         const urlParams = new URLSearchParams(window.location.search);
                                         const vcode = urlParams.get('vcode');
+                                        const Type = urlParams.get('Type');
                                         const model = urlParams.get('model');
                                         const freemil = urlParams.get('freemil');
                                         const milecost = urlParams.get('milecost');
@@ -169,6 +172,7 @@ session_start();
 
                                         // Fill the form fields with taken values
                                         document.getElementById('v-code').value = vcode;
+                                        document.getElementById('vehicleSelector').value = Type;
                                         document.getElementById('v-model').value = model;
                                         document.getElementById('v-FreeMil').value = freemil;
                                         document.getElementById('v-mileCost').value = milecost;
@@ -197,7 +201,7 @@ session_start();
                                         <b>011 - 234 5678</b>
                                     </div>
                                     <button type="button" onclick="form_buttonJump('vehicle')"> Next </button>
-                                </form>
+                                <!--</form>-->
                             </div>
                             <div class="content content-1">
                                 <div class="title">Enter reservation details</div>
@@ -222,20 +226,20 @@ session_start();
                                         <div class="place">
                                             <label for="">Pickup Place</label>
                                             <div class="choosePlace">
-                                                <input type="text" id="pickPlace" placeholder="Enter address" value="Head Office"
-                                                    required>
+                                                <input type="text" id="pickPlace" name="pickPlace"
+                                                placeholder="Enter address" value="Head Office" required>
                                             </div>
                                             <label for="">Return Place</label>
                                             <div class="choosePlace">
-                                                <input type="text" id="returnPlace" placeholder="Enter address" value="Head Office"
-                                                    required>
+                                                <input type="text" id="returnPlace" name="returnPlace"
+                                                placeholder="Enter address" value="Head Office" required>
                                             </div>
                                         </div>
                                         <div class="dtHolder">
                                             <div class="dnt-wrapper">
                                                 <div class="entDate">
                                                     <label>Pickup Date</label><br>
-                                                    <input type="date" id="pickupDate" required>
+                                                    <input type="date" id="pickupDate" name="pickupDate" required>
                                                     <script>
                                                         var currentDate = new Date().toISOString().slice(0, 10);
                                                         document.getElementById("pickupDate").setAttribute("min", currentDate);
@@ -243,7 +247,7 @@ session_start();
                                                 </div>
                                                 <div class="entTime">
                                                     <label>Pickup Time</label><br>
-                                                    <select title="pickupTime" id="pickupTime">
+                                                    <select title="pickupTime" id="pickupTime" name="pickupTime">
                                                         <option value="00:00">00:00</option>
                                                         <option value="00:30">00:30</option>
                                                         <option value="01:00">01:00</option>
@@ -304,17 +308,22 @@ session_start();
                                             <div class="dnt-wrapper">
                                                 <div class="entDate">
                                                     <label>Return Date</label><br>
-                                                    <input type="date" id="returnDate" required>
+                                                    <input type="date" id="returnDate" name="returnDate" required>
                                                     <script>
-                                                        document.getElementById("pickupDate").addEventListener("input", function () {
+                                                        document.getElementById("pickupDate").addEventListener("input", function() {
                                                             var pickupDateValue = document.getElementById("pickupDate").value;
-                                                            document.getElementById("returnDate").setAttribute("min", pickupDateValue);
+                                                            
+                                                            var nextDayTimestamp = new Date(pickupDateValue).getTime() + 24 * 60 * 60 * 1000;
+                                                            var nextDay = new Date(nextDayTimestamp);
+                                                            var nextDayFormatted = nextDay.toISOString().split('T')[0];
+                                                            
+                                                            document.getElementById("returnDate").setAttribute("min", nextDayFormatted);
                                                         });
                                                     </script>
                                                 </div>
                                                 <div class="entTime">
                                                     <label>Return Time</label><br>
-                                                    <select title="returnTime" id="returnTime">
+                                                    <select title="returnTime" id="returnTime" name="returnTime">
                                                         <option value="00:00">00:00</option>
                                                         <option value="00:30">00:30</option>
                                                         <option value="01:00">01:00</option>
@@ -382,7 +391,7 @@ session_start();
                                         <div class="cus-personal">
                                             <div class="cus-naming">
                                                 <div class="titles">
-                                                    <select title="honourific">
+                                                    <select title="honourific" name="prefix">
                                                         <option value="Mr.">Mr.</option>
                                                         <option value="Ms.">Ms.</option>
                                                         <option value="Mrs.">Mrs.</option>
@@ -395,45 +404,46 @@ session_start();
                                                 </div>
                                                 <div class="fname">
                                                     <label for="fname">First Name</label>
-                                                    <input type="text" id="fname" placeholder="Eg: John" required>
+                                                    <input type="text" id="fname" name="fname" placeholder="Eg: John" required>
                                                 </div>
                                                 <div class="lname">
                                                     <label for="lname">Last Name</label>
-                                                    <input type="text" id="lname" placeholder="Eg: Wick" required>
+                                                    <input type="text" id="lname" name="lname" placeholder="Eg: Wick" required>
                                                 </div>
                                             </div>
                                             <div class="cus-oth-details">
                                                 <div class="cus-nic">
                                                     <label for="nic">NIC</label>
-                                                    <input type="text" id="nic" required
+                                                    <input type="text" id="nic" name="nicOpass" required
                                                         maxlength="12" onblur="nicCheck(this.value)">
                                                         
                                                 </div>
                                                 <div class="cus-age">
                                                     <label for="age">Age</label>
-                                                    <input type="number" step="1" min="18" id="age" required minlength="3"
+                                                    <input type="number" step="1" min="18" id="age" name="age" required minlength="3"
                                                         value="18">
                                                 </div>
                                             </div>
                                             <div class="cus-email">
                                                 <label for="email">Email</label>
-                                                <input type="email" id="email" placeholder="Eg: johnwick40@hotmail.com"
-                                                    pattern="[a-z0-9._+%-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required onblur="emailCheck(this.value)">
+                                                <input type="email" id="email" name="CUSemail" placeholder="Eg: johnwick40@hotmail.com"
+                                                    required onblur="emailCheck(this.value)">
+                                                    <!--pattern="[a-z0-9._+%-]+@[a-z0-9.-]+\.[a-z]{2,3}$" -->
                                             </div>
                                         </div>
                                         <div class="cus-drive">
                                             <div class="pilot">
-                                                <input type="checkbox" name="driver" id="driver-need" onclick="LicenseReq()">
+                                                <input type="checkbox" name="driverNeed" id="driver-need" value="yes" onclick="LicenseReq()">
                                                 <label for="driver-need">Driver needed</label>
                                             </div>
                                             <div class="lisence">
                                                 <div class="cus-driv-lis">
                                                     <label for="dlNo">License No.</label>
-                                                    <input type="text" maxlength="9" id="dlNo" required>
+                                                    <input type="text" maxlength="9" name="CUSdl" id="dlNo" required>
                                                 </div>
                                                 <div class="cus-driv-lis">
                                                     <label for="dlExpDate">Expiration Date</label>
-                                                    <input type="date" id="dlExpDate" required>
+                                                    <input type="date" id="dlExpDate" name="CUSdlExp" required>
                                                     <script>
                                                         var currentDate = new Date().toISOString().slice(0, 10);
                                                         document.getElementById("dlExpDate").setAttribute("min", currentDate);
@@ -478,7 +488,7 @@ session_start();
                                             </div>
                                             <div class="p-cvv">
                                                 <label for="">Enter CVV</label>
-                                                <input type="password" maxlength="4" id="cvv" required>
+                                                <input type="password" maxlength="4" name="cvv" id="cvv" required>
                                             </div>
                                         </div>
                                         <div class="p-warn">
@@ -490,13 +500,11 @@ session_start();
                                             </p>
                                         </div>
                                     </div>
-                                    <button type="submit"> Book Now </button>
-                                <!--</form>-->
+                                <button type="submit" name="bookNow"> Book Now </button>
                             </div>
                         </form>
                     </section>
                 </div>
-                <!--one button, submit all, using JS-->
             </div>
 
             <div class="vehicleGrid">

@@ -14,6 +14,7 @@ function readData(){
         
                 // Assign column values to variables
                 $vehicleCode = $row['Vehicle_Code'];
+                $type = $row['Type'];
                 $model = $row['Model'];
                 $freeMilage = $row['Free_milage'];
                 $mileCost = $row['Cost_per_mile'];
@@ -23,10 +24,12 @@ function readData(){
                 $fuelType = $row['Fuel_type'];
 
                 // Redirect to home.php with query parameters
-                header("Location: home.php?vcode=$vehicleCode&model=$model&freemil=$freeMilage&milecost=$mileCost&passenger=$passengerCount&luggage=$luggage&gear=$gearSystem&fuel=$fuelType");
+                header("Location: home.php?vcode=$vehicleCode&Type=$type&model=$model&freemil=$freeMilage&milecost=$mileCost&passenger=$passengerCount&luggage=$luggage&gear=$gearSystem&fuel=$fuelType");
                 exit();
             } else {
-                echo "<script>alert('Error in search')</script>";
+                echo "<script>alert('We are sorry. Vehicle you searched is Not Avaialble.')</script>";
+                header("Location: home.php");
+                exit();
             }
         } else {
             echo "<script>alert('Something is wrong')</script>";
@@ -36,11 +39,20 @@ function readData(){
         //get all neccessary values from fields
         $vCode = $_POST['v-code'];
         $price = $_POST['v-FreeMil'];
+        
+        $type = $row['Type'];
+        $model = $row['Model'];
+        $freeMilage = $row['Free_milage'];
+        $mileCost = $row['Cost_per_mile'];
+        $passengerCount = $row['Passenger_count'];
+        $luggage = $row['Storage'];
+        $gearSystem = $row['Gear_system'];
+        $fuelType = $row['Fuel_type'];
 
         //getting pickup/return details
         $pickupPlace = $_POST['pickPlace'];
         $pickupDate = $_POST['pickupDate'];
-        $pickupTimer = $_POST['pickupTime'];
+        $pickupTime = $_POST['pickupTime'];
 
         $returnPlace = $_POST['returnPlace'];
         $returnDate = $_POST['returnDate'];
@@ -74,7 +86,7 @@ function readData(){
             $row = mysqli_fetch_assoc($result);
             $cid = $row['CID']; 
         } else {
-            echo "<script>console.log('no results from table')</script>";
+            echo "<script>alert('no results from table')</script>";
         }
 
         //free the result set (for memory purposes)
@@ -89,15 +101,15 @@ function readData(){
         //create payment
         $sql = "INSERT INTO Payment(PaymentID, Payment_datetime, Payment_type, Total_bill)
                 VALUES ('','$currentDateTime', 'Card', '$price')";
-        //Enter run sql codes
+
         echo "<script>console.log('Running insertion [Payment]')</script>";
         runSQL($conn,$sql);
 
 
 
-        if($driverNeed == 'yes'){
+        if($driverNeed == "yes"){
             //find available driverID ----> set driver as not available
-            $sql = "SELECT DriverID FROM Customer WHERE Availability = 'Available'";
+            $sql = "SELECT DriverID FROM Driver WHERE Availability = 'Available'";
             $result = mysqli_query($conn, $sql);
 
             if ($result->num_rows > 0) {
@@ -108,7 +120,7 @@ function readData(){
                 echo "<script>console.log('Running update [Driver]')</script>";
                 runSQL($conn,$sql);
             } else {
-                echo "<script>console.log('no results from driver table')</script>";
+                echo "<script>alert('no results from driver table')</script>";
             }
         }
 
@@ -121,19 +133,47 @@ function readData(){
         $sql = "INSERT INTO reserve (ReservationID, CID, DriverID, Vehicle_Code, Reservation_datetime, 
         Pickup_date, Pickup_time, Pickup_location, Return_date, Return_time, Return_location)
         VALUES('', '$cid', '$DrivID', '$vCode', '$currentDateTime', 
-                '$pickupDate', '$pickupPlace', '$pickupTime', 
+                '$pickupDate', '$pickupTime', '$pickupPlace', 
                 '$returnDate','$returnTime','$returnPlace')";
         echo "<script>console.log('Running insertion [reserve]')</script>";
         runSQL($conn,$sql);
+        
+        //joining payment and reserve
+            //getting PaymentID
+        $sql = "SELECT PaymentID FROM payment where Payment_datetime='$currentDateTime'";
+        $result = mysqli_query($conn, $sql);
+
+            if ($result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $PayID = $row['PaymentID'];
+            } else {
+                echo "<script>alert('no results from [payment] table')</script>";
+            }
+
+            //getting reservaeID
+        $sql = "SELECT ReservationID FROM reserve where Reservation_datetime='$currentDateTime'";
+        $result = mysqli_query($conn, $sql);
+
+            if ($result->num_rows > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $ReserveID = $row['ReservationID'];
+            } else {
+                echo "<script>alert('no results from [reserve] table')</script>";
+            }
+        //wait
+        $sql = "INSERT INTO reserve_payment (ReservationID, PaymentID) VALUES ('$ReserveID','$PayID')";
+        echo "<script>console.log('Running insertion [Reserve_Payment]')</script>";
+        runSQL($conn,$sql);
 
         echo "<script>alert('ALL done!!')</script>";
+        header("Location: ../php/reservationComplete.php?PayID=$PayID&vCode=$vCode&price=$price&pickupPlace=$pickupPlace&pickupDate=$pickupDate&pickupTime=$pickupTime&returnPlace=$returnPlace&returnDate=$returnDate&returnTime=$returnTime&prefix=$prefix&fname=$fname&lname=$lname&nic=$nic&age=$age&email=$email&driverNeed=$driverNeed&dlNo=$dlNo&dlExp=$dlExp&currentDateTime=$currentDateTime&ReserveID=$ReserveID&DrivID=$DrivID&cid=$cid&type=$type&model=$model&freeMilage=$freeMilage&mileCost=$mileCost&passengerCount=$passengerCount&luggage=$luggage&gearSystem=$gearSystem&fuelType=$fuelType");
+        exit();
     }
 }
 
 function runSQL($conn,$sql){
     if(mysqli_query($conn,$sql)){
         echo "<script>console.log('Record Inserted succesfully!!')</script>";
-        //header("Location:index.php");
     }else{
         echo "<script>console.log('Error in insertion')</script>";
     }
