@@ -2,8 +2,6 @@
 	include_once'config.php';
 ?> 
 
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +33,7 @@
           </div>
 
       </div>
-
+<!--Reference: https://www.w3schools.com/css/css_navbar.asp-->
          <nav class="top-nav">
             <ul class="nav-links">
 
@@ -114,15 +112,9 @@
   
           </div> 
 
-
-
-
-
         </div>
         
        
-
-        
         <div class="container-2">
 
           <div class="chart-container-workloadChart">
@@ -177,12 +169,6 @@
         </div>
 
         
-
-
-         
-         
-
-         
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <script src="dashboard.js"></script>

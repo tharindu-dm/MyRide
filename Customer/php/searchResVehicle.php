@@ -81,7 +81,6 @@ function readData(){
         //get CID
         $sql = "SELECT CID FROM Customer WHERE Nic_passport = '$nic'";
         $result = mysqli_query($conn, $sql);
-
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_assoc($result);
             $cid = $row['CID']; 

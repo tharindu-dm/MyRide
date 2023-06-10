@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/contact.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <script src="../js/contact.js"></script>
 </head>
 
 <body>
@@ -38,7 +39,7 @@
                         <span class="text">Fleet</span>
                     </a>
                 </li>
-                <li class="list active">
+                <li class="list">
                     <a href="./services.html">
                         <span class="icon">
                             <ion-icon name="layers-outline"></ion-icon>
@@ -46,7 +47,7 @@
                         <span class="text">Services</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="list active">
                     <a href="./contact.html">
                         <span class="icon">
                             <ion-icon name="call-outline"></ion-icon>
@@ -63,7 +64,7 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="../../chathura/LogIn_Reg/login/login.php">
+                    <a href="../../chathura/LogIn_Reg/login/index.php">
                         <span class="icon">
                             <ion-icon name="person-circle-outline"></ion-icon>
                         </span>
@@ -83,21 +84,25 @@
             <h2>Contact Details</h2>
             <img src="../images/contact/phone.png" alt="Telephone" width="40" height="40">
             <p>Telephone: +9471 566 7456 / +9411 2 7775 777</p>
+
             <img src="../images/contact/mail.png" alt="Mail" width="40" height="40">
             <p>Email: myridesl@gmail.com</p>
+
             <img src="../images/contact/office.png" alt="Address" width="40" height="40">
             <p>Postal Address: No 73,  12th floor, World Trade Center, Colombo 01, Sri Lanka</p>
+
         </div>
         <div class="customer-care">
             <h2>Customer Care</h2>
-            <form>
+
+            <form action="../php/contact.php" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="contact">Contact:</label>
-                    <input type="text" id="contact" name="contact" required>
+                    <label for="contact">Phone:</label>
+                    <input type="text" id="phone" name="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="problem">Problem:</label>
@@ -107,15 +112,59 @@
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" rows="4" required></textarea>
                 </div>
-                <input type="submit" value="Submit" onclick="submitForm()">
-                <input type="button" value="Edit" class="edit-button">
+                <input type="datetime" id="currDT" name="currDT" readonly style="display: none;">
+                <input type="submit" id="submitBtn" name="submit" value="Submit" onclick="submitForm()">
+                <input type="button" id="edit"  name="edit" value="Edit" class="edit-button" onclick="editingFields()"> 
+                <input type="submit" id="unsend" name="unsend" value="Unsend/Delete" class="edit-button" disabled>                   
+                <input type="submit" id="save" name="save" value="Save Changes" class="edit-button" disabled>
             </form>
+            <script>
+                /*https://stackoverflow.com/questions/45790423/how-to-get-parameter-name*/
+                //get URL parameter by name
+                function getURLParameter(name) {
+                    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                    var results = regex.exec(location.search);
+                    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+                }
+                
+                // Get the values from URL
+                var name = getURLParameter('name');
+                var phone = getURLParameter('phNo');
+                var problem = getURLParameter('prob');
+                var description = getURLParameter('des');
+                var currentDateTime = getURLParameter('curDaTi');
+                
+                if (currentDateTime != '') {
+                    var currDT = document.getElementById('currDT');
+                    currDT.style.display = 'block';
+                    currDT.value = currentDateTime;
+
+                    document.getElementById('submitBtn').disabled = true;
+                    document.getElementById('unsend').disabled = false;
+                    
+                    // Set the values to the form
+                    document.getElementById('name').value = name;
+                    document.getElementById('phone').value = phone;
+                    document.getElementById('problem').value = problem;
+                    document.getElementById('description').value = description;
+                    document.getElementById('currDT').value = currentDateTime;
+                    
+                    //turning all field to readonly
+                    document.getElementById('name').readOnly = true;
+                    document.getElementById('phone').readOnly = true;
+                    document.getElementById('problem').readOnly = true;
+                    document.getElementById('description').readOnly = true;
+                    document.getElementById('currDT').readOnly = true;                    
+                }
+
+            </script>
         </div>
     </div>
     
 
-    <!-- starting footer -->
-    <!-- done by it22003478-->
+    <!-- starting footer -->        
+        <!-- done by it22003478-->
     <footer class="footer">
         <div class="containerFoot">
             <div class="row">
@@ -161,8 +210,7 @@
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="script.js"></script>
-    <?php require '../php/contactmy.php';>
+
 </body>
 
 </html>

@@ -14,6 +14,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   formData.append("description", description);
 
   // Send the form data to the PHP file using an AJAX request
+  //https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "../php/contactmy.php", true);
   xhr.onreadystatechange = function() {
@@ -26,3 +27,15 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   };
   xhr.send(formData);
 });
+
+function editingFields() {
+  document.getElementById('unsend').disabled = true;
+  document.getElementById('save').disabled = false;
+  document.getElementById('submitBtn').disabled = true;
+
+  document.getElementById('name').readOnly = false;
+  document.getElementById('phone').readOnly = false;
+  document.getElementById('problem').readOnly = false;
+  document.getElementById('description').readOnly = false;
+
+}

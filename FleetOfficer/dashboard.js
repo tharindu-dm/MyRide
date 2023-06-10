@@ -1,5 +1,7 @@
 //Driver idling  chart 
-//Reference https://www.coding-dude.com/wp/html5/bar-chart-html/  , https://www.naishare.com/blog/how-to-create-a-bar-chart-using-html,-css-and-javascript  same code used for other charts
+//Reference https://www.coding-dude.com/wp/html5/bar-chart-html/  ,
+// https://www.naishare.com/blog/how-to-create-a-bar-chart-using-html,-css-and-javascript  
+//same code used for other charts
 const driverIdlingChart = [
     {day :'Mon' , idleTime : 60},
     {day :'Tue' , idleTime : 70},
@@ -75,7 +77,9 @@ updateButton.addEventListener('click', () => {
 
 
 //vehicle repaired return chart list
-//Referenece : https://youtu.be/SBmSRK3feww tutorials  there was a project for todo list i changed that code according to my requirements 
+//Referenece : https://youtu.be/SBmSRK3feww tutorials  
+//there was a project for todo list 
+//i changed that code according to my requirements 
 
 const repairedList=[
   { name : 'CA111' , //first object

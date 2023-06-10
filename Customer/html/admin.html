@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--https://www.sololearn.com/Discuss/2901243/meta-charset-utf-8-meta-name-viewport-content-width-device-width-initial-scale-1-0-why-this-is-same-->
+    <title>MyRide|SystemAdmin</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <img src="../images/headerLogo2.png" alt="logo" class="img1">
+            <h1>My</h1>
+            <h1 style="color: red;">R</h1>
+            <h1>ide</h1>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="../php/home.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./fleet.html">
+                        <span class="icon">
+                            <ion-icon name="car-sport-outline"></ion-icon>
+                        </span>
+                        <span class="text">Fleet</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="./services.html">
+                        <span class="icon">
+                            <ion-icon name="layers-outline"></ion-icon>
+                        </span>
+                        <span class="text">Services</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./contact.html">
+                        <span class="icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </span>
+                        <span class="text">Contact Us</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./about.html">
+                        <span class="icon">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">About</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./profile.html">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+ 
+    
+    <!-- starting system admin section -->
+
+    <div class="container-admin">
+    <div class="left-column">
+      <img src="../images/admin/profile.png" alt="Admin Profile Picture" class="picture-admin">
+      <h2 class="admin-name">Admin Name</h2>
+    </div>
+    <div class="right-column">
+      <div class="tabs">
+        <div class="tab active" id="customerTab">Customer Details</div>
+        <div class="tab" id="vehicleTab">Vehicle Details</div>
+        <div class="tab" id="driverTab">Driver Details</div>
+      </div>
+      <div class="content">
+        <div class="tab-content active" id="customerContent">
+          <div class="left-column2">
+            <img src="../images/admin/profile.png" alt="Customer Profile Picture" class="picture-customer">
+            <h3>Movindu Ranaweera</h3>
+            <p>Last Login: 20/05/2023, 17:27:30</p>
+            <p>Last Activity: 05/06/2023, 08:05:55</p>
+            <p>Total Rentals: 5</p>
+          </div>
+          <div class="right-column2">
+            <input type="button" value="Edit" class="edit-button">
+            <input type="text" placeholder="Search Customer" class="search">
+            <div class="tabs">
+              <div class="tab active" id="customerSubTab">Customer</div>
+              <div class="tab" id="rentHistorySubTab">Rent History</div>
+            </div>
+            <div class="tab-content active" id="customerSubTabContent">
+              <p>Customer Name: R.K.D.M.E.Ranaweera</p>
+              <p>User Name: Moyya27</p>
+              <p>Age: 21</p>
+              <p>NIC: 1235 1456 2456</p>
+              <p>License No: 456 587 456</p>
+              <p>Address: 19/E, Baseline Rd, Borella, Colombo 08 </p>
+            </div>
+            <div class="tab-content" id="rentHistorySubTabContent">
+              <p>Rent History: [Rent history details]</p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content" id="vehicleContent">
+          <div class="left-column2">
+            <img src="../images/admin/car.jpg" alt="Vehicle Profile Picture" class="picture-customer">
+            <h3>Vehicle Details</h3>
+            <p>Last Login: 20/05/2023, 17:27:30</p>
+            <p>Last Activity: 05/06/2023, 08:05:55</p>
+            <p>Total Rentals: 10</p>
+          </div>
+          <div class="right-column2">
+            <input type="button" value="Edit" class="edit-button">
+            <input type="text" placeholder="Search Vehicle" class="search">
+            <div class="tabs">
+              <div class="tab active" id="vehicleSubTab">Vehicle</div>
+              <div class="tab" id="maintenanceHistorySubTab">Maintenance History</div>
+            </div>
+            <div class="tab-content active" id="vehicleSubTabContent">
+              <p>Vehicle Name: XYZ123</p>
+              <p>Manufacturer: ABC Motors</p>
+              <p>Type: Sedan</p>
+              <p>Color: Blue</p>
+              <p>License Plate: 12345</p>
+              <p>Location: Colombo</p>
+            </div>
+            <div class="tab-content" id="maintenanceHistorySubTabContent">
+              <p>Maintenance History: [Maintenance history details]</p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content" id="driverContent">
+          <div class="left-column2">
+            <img src="../images/admin/profile.png" alt="Driver Profile Picture" class="picture-customer">
+            <h3>Driver Details</h3>
+            <p>Last Login: 20/05/2023, 17:27:30</p>
+            <p>Last Activity: 05/06/2023, 08:05:55</p>
+            <p>Total Rentals: 15</p>
+          </div>
+          <div class="right-column2">
+            <input type="button" value="Edit" class="edit-button">
+            <input type="text" placeholder="Search Driver" class="search">
+            <div class="tabs">
+              <div class="tab active" id="driverSubTab">Driver</div>
+              <div class="tab" id="tripHistorySubTab">Trip History</div>
+            </div>
+            <div class="tab-content active" id="driverSubTabContent">
+              <p>Driver Name: John Doe</p>
+              <p>License No: 123456</p>
+              <p>Age: 30</p>
+              <p>NIC: 789012345</p>
+              <p>Address: 123 Main St, City</p>
+              <p>Contact: 9876543210</p>
+            </div>
+            <div class="tab-content" id="tripHistorySubTabContent">
+              <p>Trip History: [Trip history details]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./admin.js"></script>
+
+       	    
+
+    <!-- starting footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>My Ride</h4>
+                    <ul>
+                        <li><a href="about.html">about us</a></li>
+                        <li><a href="services.html">our services</a></li>
+                        <li><a href="Privacy-policy.html">privacy policy</a></li>
+                        <li><a href="Terms & conditions.html">Terms and conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="contact.html">FAQ</a></li>
+                        <li><a href="contact.html">Email</a></li>
+                        <li><a href="contact.html">telephone</a></li>
+                        <li><a href="contact.html">contact us</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Reservation</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                        <li><a href="#">Customizing bookings</a></li>
+                        <li><a href="#">Payment gateway</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

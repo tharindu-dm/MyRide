@@ -11,11 +11,15 @@ if(isset($_POST['saveChanges'])){
     echo "<script>alert('Your reservation will be deleted')</script>";
 
     $resID = $_POST['resID'];
-    $cid = $_POST['cid'];
-    $custEmail = $_POST['email'];
-    $sql = "DELETE FROM reserve WHERE ReservationID='$resID'";
+    $payID = $_POST['payID'];
+    $cid = $_POST['cusID'];
+    $custEmail = $_POST['cusEmail'];
+
+    $sql = "DELETE FROM reserve_payment WHERE ReservationID='$resID' AND PaymentID='$payID'";
     runSQL($conn,$sql);
 
+    $sql = "DELETE FROM reserve WHERE ReservationID='$resID'";
+    runSQL($conn,$sql);
     //if email not in userAccount, DELETE everything customer related to!!!
     $sql = "SELECT Username FROM user_account where Username='$cusEmail'";
     $result = mysqli_query($conn, $sql);
@@ -27,6 +31,8 @@ if(isset($_POST['saveChanges'])){
         echo "<script>console.log('no results table')</script>";
         //delete from customerDL, payment, customer
     }
+    
+    header("Location: ./home.php");
 }
 
 function runSQL($conn,$sql){
@@ -96,7 +102,7 @@ function runSQL($conn,$sql){
                     */-->
 
                 <script>
-                    // Function to retrieve URL parameter values by name
+                    // Retrieve URL parameter values by names
                     function getParameterByName(name, url) {
                         if (!url) url = window.location.href;
                         name = name.replace(/[\[\]]/g, '\\$&');
@@ -111,6 +117,7 @@ function runSQL($conn,$sql){
                         // fill form fields with URL parameter values
                         document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('resID').value = getParameterByName('ReserveID');
+                        document.getElementById('resDT').value = getParameterByName('currentDateTime');
                         document.getElementById('payID').value = getParameterByName('PayID');
 
                         document.getElementById('pkLoc').value = getParameterByName('pickupPlace');
@@ -121,6 +128,7 @@ function runSQL($conn,$sql){
                         document.getElementById('retDate').value = getParameterByName('returnDate');
                         document.getElementById('retTime').value = getParameterByName('returnTime');
 
+                        document.getElementById('cusID').value = getParameterByName('cid');
                         document.getElementById('cusPrefix').value = getParameterByName('prefix');
                         document.getElementById('cusFName').value = getParameterByName('fname');
                         document.getElementById('cusLName').value = getParameterByName('lname');
