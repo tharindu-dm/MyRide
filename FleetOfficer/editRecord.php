@@ -3,13 +3,7 @@
 ?>
 
 <?php
-        // this code is wriiten to get the selected record from index.php to editRecod.php
-        // $Item_id = $_GET['id'] ;//since we grab the values the method should be get [id] is the variable assign in index.php +++
-        // $Item_name = $_GET['name'];
-        // $Item_description = $_GET['des'];
-        // $Price = $_GET['price'];
-        // $Quantity =  $_GET['qty'];
-        // $Item_code = $_GET['code'];
+        
 
         $Vehicle_Code       = $_GET['id'];
         $Model              = $_GET['model'];

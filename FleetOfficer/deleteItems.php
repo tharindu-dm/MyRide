@@ -24,21 +24,7 @@ if (isset($_GET['id'])) {
 }
 
 
-        // $id  = $_GET['id'];
-        // $query = " DELETE 
-        //            FROM item
-        //            WHERE Item_id =   '$id'  ";
-
-        // $data = mysqli_query($conn,$query);
-        // // error_reporting(E_ALL);
-        // // ini_set('display_errors', true);
         
-        // if($data ){
-        //     echo "<script>alert('Record Deleted!!')</script>";
-
-        // }else{
-        //     echo"<script>alert('Error in Delete')</script>";
-        // }
 
         mysqli_close($conn);
 ?>

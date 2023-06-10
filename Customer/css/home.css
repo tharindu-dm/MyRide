@@ -1,6 +1,6 @@
 /*Aside*/
 .forms-And-VehiGrid{
-    display:flex;
+    display:flex; /*w3school*/
     min-height: 60rem;
     margin-bottom: 5rem;
 }
@@ -38,6 +38,7 @@
     align-items: center;
     margin-left: 0.3rem;
 }
+/*https://www.youtube.com/watch?v=QtwXQdlvyWA*/
 #essentials:checked ~ nav label.essentials,
 #customer:checked ~ nav label.customer,
 #vehicle:checked ~ nav label.vehicle,
@@ -81,7 +82,7 @@
 #essentials:checked ~ nav .slider{
     left: 27%;
 }
-#customer:checked ~ nav .slider{
+#customer:checked ~ nav .slider{ /*left-side of ~ happens THEN do right-side*/
     left: 52%;
 }
 #payment:checked ~ nav .slider{
@@ -180,7 +181,7 @@
     border-radius: 0.5rem;
 }
 
-.dtHolder select, .dtHolder select option{
+.dtHolder select, .dtHolder select option{ 
     text-align: center;
     font-size: 1rem;
     width: 9rem;
@@ -211,7 +212,7 @@ button:hover{
     flex-direction: column;
 }
 :root{
-    --cus-p-width: 32rem;
+    --cus-p-width: 32rem; /*css variables , variable-ing*/
     --textf-len:13rem;
 }
 .cus-personal, .cus-drive{    
@@ -259,7 +260,7 @@ button:hover{
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 .cus-driv-lis input{
-    width: var(--textf-len);
+    width: var(--textf-len); /*access variables*/
 }
 
 .cus-driv-lis{
@@ -288,7 +289,7 @@ button:hover{
 .v-rows-container, .v-3col-container{
     display: flex;
     margin-top: 1rem;
-    padding: 1rem 4rem 1rem 1rem;
+    padding: 1rem 4rem 1rem 1rem; /*rem is a unit like px*/
     border: 0.2rem solid dodgerblue;
     border-radius: 1rem;
 }
@@ -313,7 +314,7 @@ button:hover{
 }
 
 .v-rows input{
-    transform: translateX(-12.25rem);
+    transform: translateX(-12.25rem); /*move freely in axis-es*/
 }
 
 .v-3col input, .v-rows input, #vehicleSelector{
@@ -412,6 +413,7 @@ section.vehicleGrid{
     --colValue: 16vw;
 }
 
+/*https://www.youtube.com/watch?v=lvKK2fs6h4I&t=213s*/
 .scrollable-column{
     overflow: hidden;
     overflow-y: scroll;
@@ -427,6 +429,7 @@ section.vehicleGrid{
     margin-top: 3rem;
 }
 
+/*image grids done by it22345332*/
 .image-grid {
     --gap: 1rem;
     --num-cols: 3;

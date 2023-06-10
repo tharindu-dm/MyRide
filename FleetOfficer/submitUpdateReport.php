@@ -7,13 +7,13 @@
         //values inside [] is name in the label because we are accessing the values in those labels using the names
         $Vehicle_Code       = $_GET['feild0up'];
         $Model              = $_GET['feild1up'];
-        $Availability_      = $_GET['feild2up'];
+        $Availability      = $_GET['feild2up'];
         $Passenger_count    = $_GET['feild3up'];
-        $Type_              = $_GET['feild4up'];
+        $Type              = $_GET['feild4up'];
         $Fuel_Type          = $_GET['feild5up'];
         $InsuranceID        = $_GET['feild6up'];
         $Gear_system        = $_GET['feild7up'];
-        $LisencePlate       = $_GET['feild8up'];
+        $LicensePlate       = $_GET['feild8up'];
         $Storage            = $_GET['feild9up'];
         $Free_milage        = $_GET['feild10up'];
         $Cost_per_mile      = $_GET['feild11up'];
@@ -21,13 +21,13 @@
       
             $query = "UPDATE vehicle SET   
                         Model  ='$Model' ,        
-                        Availability_   ='$Availability_',     
+                        Availability   ='$Availability',     
                         Passenger_count ='$Passenger_count',  
-                        Type_        ='$Type_',        
+                        Type        ='$Type',        
                         Fuel_Type    = '$Fuel_Type'   ,       
                         InsuranceID  ='$InsuranceID',      
                         Gear_system  = '$Gear_system',      
-                        LisencePlate ='$LisencePlate',     
+                        LicensePlate ='$LicensePlate',     
                         Storage      ='$Storage',     
                         Free_milage  ='$Free_milage',     
                         Cost_per_mile ='$Cost_per_mile'    

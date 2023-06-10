@@ -180,7 +180,7 @@
 
                                         <tr>
                                                 <td>Ref ID</td>
-                                                <td><input type = "text" value = "<?php echo"$Ref_ID"?>" name = "feild4" readonly ></td> 
+                                                <td><input type = "text" value = "<?php echo"$Ref_ID"?>" name = "feild4" ></td> 
                                                 
                                         </tr>
                                       

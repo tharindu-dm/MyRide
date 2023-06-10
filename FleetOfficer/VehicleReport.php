@@ -116,21 +116,19 @@
 										"</td><td>".$row["Cost_per_mile"].
 										"</td>";   //</tr> in here should move below because we have added below two buttons to each row
 
-									//echo"<td> <a href = 'editRecord.php?  id = $row[Item_id]&name= $row[Item_name]&des= $row[Item_description]&price= $row[Price]&qty = $row[Quantity]&code = $row[Item_code]'> < input type = 'submit' value = 'Edit' > </td>"; //+++
-									//above one is the lectureers one it should be corrected as below one	 
+										 
 									
 
 									echo "<td>
 									<a href='editRecord.php?id={$row['Vehicle_Code']}&model={$row['Model']}&avail={$row['Availability']}&passengerNo={$row['Passenger_count']}&type={$row['Type']}&fuelType={$row['Fuel_type']}
-									&insuranceID={$row['InsuranceID']}&gearSys={$row['Gear_system']}&lisencePlate={$row['LicensePlate']}&storage={$row['Storage']}&freeMilage={$row['Free_milage']}&cost={$row['Cost_per_mile']}'><input type='submit' value='Edit' class='edit-button'></a> </td>";//++
-									//in inside the anchor tag we should use the same column name same sequence (inside the associative variablr which is $row[] inside square brakets)that we use to create the table  using php myAdmin
-									// we have to use everything (variable name which means &price = $row[Price] in here &price we are the variablr used in submitAddItems.php %%% )also like in submitAddItems.php %%% way  
+									&insuranceID={$row['InsuranceID']}&gearSys={$row['Gear_system']}&lisencePlate={$row['LicensePlate']}&storage={$row['Storage']}&freeMilage={$row['Free_milage']}&cost={$row['Cost_per_mile']}'><input type='submit' value='Edit' class='edit-button'></a> </td>";
+									 
 									
 									echo"<td><a href = 'deleteItems.php?id={$row['Vehicle_Code']}'> <input type = 'submit' value = 'Delete' class='delete-button' ></a></td> 
 								</tr>"; //closing </tr> tag should be added here
-						//above one is lecturer 's one that is not working below one is working
-						//now above one is also working the issue is with the spaces everything should be like above no additional space then it wont work
-						//echo"<td> <a href='deleteItems.php?id={$row['Item_id']}'><input type='submit' value='Delete'></a> </td> </tr>";//closing </tr> tag should be added here
+						
+						
+						
 					}
 
 				}else{

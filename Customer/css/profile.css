@@ -24,6 +24,8 @@
     align-items: center;
     margin-left: 0.3rem;
 }
+
+/*https://www.youtube.com/watch?v=QtwXQdlvyWA*/
 #User:checked ~ nav label.User,
 #Reservation:checked ~ nav label.Reservation,
 #Payments:checked ~ nav label.Payments{

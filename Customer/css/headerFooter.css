@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+/*get fonts for site*/
 *{ 
     margin:0;
     padding: 0;    
     font-family: 'Poppins', Arial, sans-serif;
 }
+/*remove white border || https://www.youtube.com/watch?v=vb00fdiivXI*/
 
 body{
     background-image: url(../images/testBG.jpg);
@@ -15,12 +16,13 @@ body{
     color:dimgrey;
     flex: 10;
 }
-/*header and navigation*/
+/*header and navigation
+^^ https://www.youtube.com/watch?v=a3rofqqrTBE&t=394s*/
 .header{
     display: flexbox;
 }
 
-header > div, div > img, div > h1 { 
+header > div, div > img, div > h1 { /*direct children accessing*/
     display: inline-block;
 }
 
@@ -68,10 +70,10 @@ header{
     font-size: 1.5rem;
     width: 9rem;
     height: 9rem;
-    z-index: 1;
+    z-index: 1; /*depth compared to other elements*/
 }
 
-.navigation ul li a{
+.navigation ul li a{ /*not direct, but IN*/
     position: relative;
     display: flex;
     justify-content: center;
@@ -110,12 +112,12 @@ header{
     transition: 0.35s;
 }
 
-.navigation ul li.active a .icon, .navigation ul li.active a .text{
+.navigation ul li.active a .icon, .navigation ul li.active a .text{ /*li.active  active class only in LI element*/
     color: gold;
 }
 
 
-/*footer*/
+/*footer and rest from here, done by it22003478*/
 .footer{
     background-color: #24262b;
     padding: 70px 0;

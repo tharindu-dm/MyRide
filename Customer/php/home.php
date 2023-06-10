@@ -1,6 +1,7 @@
 <?php
-include_once './config.php';
 session_start();
+include_once './config.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -10,13 +11,13 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <!--https://www.sololearn.com/Discuss/2901243/meta-charset-utf-8-meta-name-viewport-content-width-device-width-initial-scale-1-0-why-this-is-same-->
     <title>MyRide|Home</title>
 
     <link rel="stylesheet" href="../css/home.css"/>
     <link rel="stylesheet" href="../css/headerFooter.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
+    <!--https://cdnjs.com/libraries/font-awesome || for icons-->
     <script src="../js/home.js"></script>
 </head>
 
@@ -32,8 +33,8 @@ session_start();
                 <ul>
                     <li class="list active">
                         <a href="./home.php">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
+                            <span class="icon"><!--https://www.w3schools.com/tags/tag_span.asp-->
+                                <ion-icon name="home-outline"></ion-icon> <!--https://ionic.io/ionicons-->
                             </span>
                             <span class="text">Home</span>
                         </a>
@@ -71,7 +72,7 @@ session_start();
                         </a>
                     </li>
                     <li class="list">
-                        <a href="./profile.php">
+                        <a href="../../chathura/LogIn_Reg/login/index.php">
                             <span class="icon">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                             </span>
@@ -140,10 +141,6 @@ session_start();
                                             <label for="">Luggage/Storage</label>
                                             <input type="text" id="v-luggage" name="v-luggage" readonly>
                                         </div>
-                                        <!--<div class="v-rows rt3">
-                                            <label for="">Air Conditioning</label>
-                                            <input type="text" id="v-ac" name="v-ac" readonly>
-                                        </div>-->
                                         <div class="v-rows rt4">
                                             <label for="">Gear System</label>
                                             <input type="text" id="v-gear" name="v-gear" readonly>
@@ -155,6 +152,7 @@ session_start();
                                     </div>
                                     <script>
                                         // Bring query parameters from PHP URL
+                                        //https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
                                         const urlParams = new URLSearchParams(window.location.search);
                                         const vcode = urlParams.get('vcode');
                                         const Type = urlParams.get('Type');
@@ -166,7 +164,7 @@ session_start();
                                         const gear = urlParams.get('gear');
                                         const fuel = urlParams.get('fuel');
 
-                                        // Fill the form fields with taken values
+                                        // Fill the ipnut fields with taken values
                                         document.getElementById('v-code').value = vcode;
                                         document.getElementById('vehicleSelector').value = Type;
                                         document.getElementById('v-model').value = model;
@@ -237,7 +235,7 @@ session_start();
                                                     <label>Pickup Date</label><br>
                                                     <input type="date" id="pickupDate" name="pickupDate" required>
                                                     <script>
-                                                        var currentDate = new Date().toISOString().slice(0, 10);
+                                                        var currentDate = new Date().toISOString().slice(0, 10);// Format as yyyy-mm-dd
                                                         document.getElementById("pickupDate").setAttribute("min", currentDate);
                                                     </script>
                                                 </div>
@@ -306,13 +304,14 @@ session_start();
                                                     <label>Return Date</label><br>
                                                     <input type="date" id="returnDate" name="returnDate" required>
                                                     <script>
+                                                        //https://www.w3schools.com/jsref/met_element_addeventlistener.asp
                                                         document.getElementById("pickupDate").addEventListener("input", function() {
                                                             var pickupDateValue = document.getElementById("pickupDate").value;
                                                             
                                                             var nextDayTimestamp = new Date(pickupDateValue).getTime() + 24 * 60 * 60 * 1000;
                                                             var nextDay = new Date(nextDayTimestamp);
                                                             var nextDayFormatted = nextDay.toISOString().split('T')[0];
-                                                            
+                                                            //date overputted will be 1 day after date entered in pickup
                                                             document.getElementById("returnDate").setAttribute("min", nextDayFormatted);
                                                         });
                                                     </script>
@@ -442,6 +441,7 @@ session_start();
                                                     <input type="date" id="dlExpDate" name="CUSdlExp" required>
                                                     <script>
                                                         var currentDate = new Date().toISOString().slice(0, 10);
+                                                        //toISOString()format the date value according to a usual format and slice to get jst the Date
                                                         document.getElementById("dlExpDate").setAttribute("min", currentDate);
                                                     </script>
                                                 </div>
@@ -503,7 +503,7 @@ session_start();
                 </div>
             </div>
 
-            <div class="vehicleGrid">
+            <div class="vehicleGrid"><!--image grids done by it22345332-->
                 <div class="scrollable-column" id="grid-scroll">
                     <div class="image-grid">
                         <img src="../images/assets/car.jpg" alt="car" data-cat="car" class="v-img">
@@ -528,6 +528,7 @@ session_start();
             </div>
         </section>
         
+        <!-- done by it22003478-->
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -574,6 +575,7 @@ session_start();
 
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+                <!--use for icons related for navigation-->
     </body>
 
 </html>

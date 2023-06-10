@@ -1,15 +1,16 @@
-<?php
-include_once './config.php';
-?>
+<!--UNCOMPLETED FILE. Created by IT22337344-->
 <?php
 session_start();
-if(isset($_POST["txtName"])){
-    if($_POST["txtName"]=="asd" && $_POST["txtPass"]=="123") {
-        $_SESSION["userName"] = $_POST["txtName"];
-    }
-}
-if(!isset($_SESSION["userName"])) {
-    header("Location:login.php");
+include_once './config.php';
+
+if(isset($_SESSION["customer"])) {
+    // Access the session data
+    $customerData = $_SESSION["customer"];
+}else{
+    echo "<script>alert('UNKOWN ERROR')</script>";
+    
+    header("Location: ./home.php");
+    exit();
 }
 ?>
 

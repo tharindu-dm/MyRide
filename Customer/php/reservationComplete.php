@@ -1,47 +1,7 @@
 <?php
 include_once './config.php';
 session_start();
-/*
-//add query code to get all the details and set to the fields
-//UPDATE CODE style
-$sql="UPDATE Vehicle SET Availability = 'Not Available' WHERE Vehicle_Code='$vCode'";
-echo "<script>console.log('Running update [Vehicle]')</script>";
-runSQL($conn,$sql);
 
-//INSERT CODE style
-$sql = "INSERT INTO reserve (ReservationID, CID, DriverID, Vehicle_Code, Reservation_datetime, 
-Pickup_date, Pickup_time, Pickup_location, Return_date, Return_time, Return_location)
-VALUES('', '$cid', '$DrivID', '$vCode', '$currentDateTime', 
-        '$pickupDate', '$pickupTime', '$pickupPlace', 
-        '$returnDate','$returnTime','$returnPlace')";
-echo "<script>console.log('Running insertion [reserve]')</script>";
-runSQL($conn,$sql);
-
-//SELECT CODE Style
-$sql = "SELECT PaymentID FROM payment where Payment_datetime='$currentDateTime'";
-$result = mysqli_query($conn, $sql);
-
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $PayID = $row['Payment_datetime'];
-    } else {
-        echo "<script>alert('no results from [payment] table')</script>";
-    }
-
-    //getting reservaeID
-$sql = "SELECT ReservationID FROM reserve where Reservation_datetime='$currentDateTime'";
-$result = mysqli_query($conn, $sql);
-
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $ReserveID = $row['ReservationID'];
-    } else {
-        echo "<script>alert('no results from [reserve] table')</script>";
-    }
-
-
-    //function to run sql queris
-*/
 global $conn;
 if(isset($_POST['saveChanges'])){
     
@@ -49,11 +9,13 @@ if(isset($_POST['saveChanges'])){
     $conn->close();
 } else if(isset($_POST['deleteRes'])){
     echo "<script>alert('Your reservation will be deleted')</script>";
+
     $resID = $_POST['resID'];
     $cid = $_POST['cid'];
     $custEmail = $_POST['email'];
     $sql = "DELETE FROM reserve WHERE ReservationID='$resID'";
     runSQL($conn,$sql);
+
     //if email not in userAccount, DELETE everything customer related to!!!
     $sql = "SELECT Username FROM user_account where Username='$cusEmail'";
     $result = mysqli_query($conn, $sql);
@@ -83,7 +45,8 @@ function runSQL($conn,$sql){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<!--https://www.sololearn.com/Discuss/2901243/meta-charset-utf-8-meta-name-viewport-content-width-device-width-initial-scale-1-0-why-this-is-same-->
+    
         <title>MyRide|Home</title>
 
         <link rel="stylesheet" href="../css/reserveDetails.css"/>
@@ -130,83 +93,7 @@ function runSQL($conn,$sql){
                     &luggage=
                     &gearSystem=
                     &fuelType=
-                    */
-
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const ReserveID = urlParams.get('ReserveID');
-                    const DrivID = urlParams.get('DrivID');
-                    const cid = urlParams.get('cid');
-                    const PayID = urlParams.get('PayID');
-
-                    const pickupPlace = urlParams.get('pickupPlace');
-                    const pickupDate = urlParams.get('pickupDate');
-                    const pickupTime = urlParams.get('pickupTime');
-                    const returnPlace = urlParams.get('returnPlace');
-                    const returnDate = urlParams.get('returnDate');
-                    const returnTime = urlParams.get('returnTime');
-
-                    const prefix = urlParams.get('prefix');
-                    const fname = urlParams.get('fname');
-                    const lname = urlParams.get('lname');
-                    const nic = urlParams.get('nic');
-                    const age = urlParams.get('age');
-                    const email = urlParams.get('email');
-                    
-                    const vCode = urlParams.get('vCode');
-                    const freeMil = urlParams.get('price');
-
-                    const type = urlParams.get('type');
-                    const model = urlParams.get('model');
-                    const freeMilage = urlParams.get('freeMilage');
-                    const mileCost = urlParams.get('mileCost');
-                    const passengerCount = urlParams.get('passengerCount');
-                    const luggage = urlParams.get('luggage');
-                    const gearSystem = urlParams.get('gearSystem');
-                    const fuelType = urlParams.get('fuelType');
-
-                    const driverNeed = urlParams.get('driverNeed');
-                    const dlNo = urlParams.get('dlNo');
-                    const dlExp = urlParams.get('dlExp');
-                    const currentDateTime = urlParams.get('currentDateTime');
-
-                    // Fill the form fields with taken values
-                    document.getElementById('resID').value = ReserveID; 
-                    document.getElementById('resDT').value = currentDateTime;                     
-                    document.getElementById('payID').value = PayID; 
-                    
-                    document.getElementById('pkLoc').value = pickupPlace; 
-                    document.getElementById('pkDate').value = pickupDate; 
-                    document.getElementById('pkTime').value = pickupTime; 
-                    document.getElementById('retLoc').value = returnPlace; 
-                    document.getElementById('retDate').value = returnDate; 
-                    document.getElementById('retTime').value = returnTime; 
-
-                    document.getElementById('vCode').value = vCode;                     
-                    document.getElementById('vType').value = type; 
-                    document.getElementById('vModel').value = model; 
-
-                    document.getElementById('freeMil').value = freeMil; 
-                    document.getElementById('mileCost').value = mileCost; 
-
-                    document.getElementById('headCount').value = passengerCount; 
-                    document.getElementById('vStore').value = luggage; 
-                    document.getElementById('vGear').value = gearSystem; 
-                    document.getElementById('vFuel').value = fuelType; 
-                    
-                    document.getElementById('cusID').value = cid; 
-                    document.getElementById('cusPrefix').value = prefix; 
-                    document.getElementById('cusFName').value = fname; 
-                    document.getElementById('cusLName').value = lname; 
-                    document.getElementById('cusNIC').value = nic; 
-                    document.getElementById('cusAge').value = age; 
-                    document.getElementById('cusEmail').value = email; 
-
-                    document.getElementById('driverNeed').value = driverNeed;//not done
-                    document.getElementById('dlNo').value = dlNo;//not done
-                    document.getElementById('dlExp').value = dlExp;//not done
-                    document.getElementById('DrivID').value = DrivID;//not done
-
-                </script>-->
+                    */-->
 
                 <script>
                     // Function to retrieve URL parameter values by name
@@ -219,8 +106,9 @@ function runSQL($conn,$sql){
                         if (!results[2]) return '';
                         return decodeURIComponent(results[2].replace(/\+/g, ' '));
                     }
+                    /*https://stackoverflow.com/questions/45790423/how-to-get-parameter-name*/
 
-                        // Populate form fields with URL parameter values
+                        // fill form fields with URL parameter values
                         document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('resID').value = getParameterByName('ReserveID');
                         document.getElementById('payID').value = getParameterByName('PayID');
@@ -438,6 +326,7 @@ function runSQL($conn,$sql){
             </fieldset>
         </div>
         
+        <!--Done by it22003478-->
         <footer class="footer">
             <div class="container">
                 <div class="row">

@@ -1,3 +1,17 @@
+ //Refference
+//https:youtu.be/CkVrmLLHmuI (Dashboard Interface)
+//https:www.w3schools.com/js/js_graphics_chartjs.asp(charts and graphs)
+//https:www.geeksforgeeks.org/how-to-design-a-simple-calendar-using-javascript/(calender)
+//https:talkerscode.com/webtricks/add-edit-and-delete-rows-from-table-dynamically-using-javascript.php(js tables)
+//https:www.codemag.com/article/1511031/CRUD-in-HTML-JavaScript-and-jQuery(js tables)
+//Reference https://www.coding-dude.com/wp/html5/bar-chart-html/  , https://www.naishare.com/blog/how-to-create-a-bar-chart-using-html,-css-and-javascript
+//vehicle repaired return chart list
+//Referenece : https://youtu.be/SBmSRK3feww tutorials  there was a project for todo list i changed that code according to my requirements 
+
+
+
+
+
 // Function to display the login modal when the user icon is clicked
 document.getElementById('user-icon').addEventListener('click', function() {
   document.getElementById('login-modal').style.display = 'block';

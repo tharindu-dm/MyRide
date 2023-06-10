@@ -1,118 +1,168 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>MyRide|Home</title>
-        <link rel="stylesheet" href="../css/contact.css"/>
-        <link rel="stylesheet" href="../css/headerFooter.css"/>
-    </head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--https://www.sololearn.com/Discuss/2901243/meta-charset-utf-8-meta-name-viewport-content-width-device-width-initial-scale-1-0-why-this-is-same-->
+    <title>MyRide|ContactUs</title>
+    <link rel="stylesheet" href="../css/contact.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <img src="../images/headerLogo2.png" alt="logo" class="img1">
+            <h1>My</h1>
+            <h1 style="color: red;">R</h1>
+            <h1>ide</h1>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="../php/home.php">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./fleet.html">
+                        <span class="icon">
+                            <ion-icon name="car-sport-outline"></ion-icon>
+                        </span>
+                        <span class="text">Fleet</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="./services.html">
+                        <span class="icon">
+                            <ion-icon name="layers-outline"></ion-icon>
+                        </span>
+                        <span class="text">Services</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./contact.html">
+                        <span class="icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </span>
+                        <span class="text">Contact Us</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./about.html">
+                        <span class="icon">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">About</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../../chathura/LogIn_Reg/login/login.php">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+   <!-- starting contactUs -->
+      
+    <header class="header-contact">
+        <h1>Contact Us</h1>
+    </header>
+    <div class="container">
+        <div class="contact-details">
+            <h2>Contact Details</h2>
+            <img src="../images/contact/phone.png" alt="Telephone" width="40" height="40">
+            <p>Telephone: +9471 566 7456 / +9411 2 7775 777</p>
+            <img src="../images/contact/mail.png" alt="Mail" width="40" height="40">
+            <p>Email: myridesl@gmail.com</p>
+            <img src="../images/contact/office.png" alt="Address" width="40" height="40">
+            <p>Postal Address: No 73,  12th floor, World Trade Center, Colombo 01, Sri Lanka</p>
+        </div>
+        <div class="customer-care">
+            <h2>Customer Care</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="problem">Problem:</label>
+                    <input type="text" id="problem" name="problem" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <input type="submit" value="Submit" onclick="submitForm()">
+                <input type="button" value="Edit" class="edit-button">
+            </form>
+        </div>
+    </div>
     
-    <body>
-        <header class="header">
-            <div>
-                <img src="../images/headerLogo2.png" alt="logo">
-                <h1>My</h1>
-                <h1 style="color: red;">R</h1>
-                <h1>ide</h1>
-            </div>
-            <div class="navigation">
-                <ul>
-                    <li class="list">
-                        <a href="./home.php">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="text">Home</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="./fleet.php">
-                            <span class="icon">
-                                <ion-icon name="car-sport-outline"></ion-icon>
-                            </span>
-                            <span class="text">Fleet</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="./services.php">
-                            <span class="icon">
-                                <ion-icon name="layers-outline"></ion-icon>
-                            </span>
-                            <span class="text">Services</span>
-                        </a>
-                    </li>
-                    <li class="list active">
-                        <a href="./contact.php">
-                            <span class="icon">
-                                <ion-icon name="call-outline"></ion-icon>
-                            </span>
-                            <span class="text">Contact Us</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="./about.php">
-                            <span class="icon">
-                                <ion-icon name="information-circle-outline"></ion-icon>
-                            </span>
-                            <span class="text">About</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="./profile.php">
-                            <span class="icon">
-                                <ion-icon name="person-circle-outline"></ion-icon>
-                            </span>
-                            <span class="text">Profile</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </header>
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col">
-                        <h4>My Ride</h4>
-                        <ul>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a href="services.html">our services</a></li>
-                            <li><a href="Privacy-policy.html">privacy policy</a></li>
-                            <li><a href="Terms & conditions.html">Terms and conditions</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>get help</h4>
-                        <ul>
-                            <li><a href="contact.html">FAQ</a></li>
-                            <li><a href="contact.html">Email</a></li>
-                            <li><a href="contact.html">telephone</a></li>
-                            <li><a href="contact.html">contact us</a></li>
+    <!-- starting footer -->
+    <!-- done by it22003478-->
+    <footer class="footer">
+        <div class="containerFoot">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>My Ride</h4>
+                    <ul>
+                        <li><a href="about.html">about us</a></li>
+                        <li><a href="services.html">our services</a></li>
+                        <li><a href="Privacy-policy.html">privacy policy</a></li>
+                        <li><a href="Terms & conditions.html">Terms and conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="contact.html">FAQ</a></li>
+                        <li><a href="contact.html">Email</a></li>
+                        <li><a href="contact.html">telephone</a></li>
+                        <li><a href="contact.html">contact us</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Reservation</a></li>
-                            <li><a href="#">Cancellation</a></li>
-                            <li><a href="#">Customizing bookings</a></li>
-                            <li><a href="#">Payment gateway</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>follow us</h4>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Reservation</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                        <li><a href="#">Customizing bookings</a></li>
+                        <li><a href="#">Payment gateway</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-        </footer>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
-    </body>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+    <?php require '../php/contactmy.php';>
+</body>
+
 </html>
