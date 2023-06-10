@@ -133,6 +133,11 @@ readData();*/
             header("Location: ../../../FleetOfficer/fleetdashboard.php");
             exit();
         }
+        else if($username == "admin@example.com" && $password == "Pass123"){
+            $_SESSION['admin']=$username;
+            header("Location: ../../../Customer/html/admin.html");
+            exit();
+        }
         else{
             echo"<script>alert('You have entered the incorrect Username or the Password')</script>";
         }
