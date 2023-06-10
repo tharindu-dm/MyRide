@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>request delete account</title>
+    <link rel="stylesheet" href="request_del_acc.css">
+</head>
+<body>
+    <div class="details">
+        <form action="./request_del_acc.php" method="post">
+            <center><h1>Request Delete Account</h1></center>
+            <hr color="black">
+            <label for="username">Username</label>
+            <input type="text" class="username" name="username" required><br><br>
+            <label for="nic">NIC Number</label>
+            <input type="text" class="nic" name="nic-number" required><br><br>
+            <label for="password">Password</label>
+            <input type="password" class="password" name="password" required><br><br>
+            
+            <button class="delete" name="delAcc" type="submit">Delete Account</button>
+            <button class="home"><a href="login.php">home</button>
+            </a>
+        </form>
+    </div>
+</body>
+</html>

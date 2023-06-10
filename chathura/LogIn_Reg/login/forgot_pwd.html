@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forgot password</title>
+    <link rel="stylesheet" href="forgot_pwd.css">
+</head>
+<body>
+    <div class="details">
+        <center><h1>Did You Forget Your Password?</h1>
+        <p>We got you!</p></center>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const urlParams = new URLSearchParams(window.location.search);
+              const chg = urlParams.get('change');
+              const em = urlParams.get('email');
+
+              if (chg === 'yes') {
+                var emailLabel = document.querySelector('label[for="email"]');
+                var emailInput = document.getElementById("email");
+                var nicLabel = document.querySelector('label[for="nic"]'); //https://www.w3schools.com/jsref/met_document_queryselector.asp
+                var nicInput = document.getElementById("nic");
+                var resetButton = document.querySelector('button[type="submit"]');
+                resetButton.name = "resetPW";
+          
+                emailLabel.innerHTML = "Enter new password";
+                emailInput.placeholder = "Enter new password";
+                emailInput.id = "new_password";
+                emailInput.name = "new_password";
+                nicLabel.innerHTML = "Confirm password";
+                nicInput.placeholder = "Confirm password";
+                nicInput.id = "confirm_password";
+                nicInput.name = "confirm_password";
+                nicInput.maxlength = "50";              
+                resetButton.name = "resetPW";
+
+                
+                var email_input = document.getElementById("emailValue");
+                email_input.style.display = "block";
+                email_input.value = em;
+              }
+            });
+          </script>
+          
+        <form action="./forgot_pwd.php" method="post">
+            <input id="emailValue" style="display: none;" name="emPara" readonly>
+            <label for="email">email</label>
+            <input type="text" id="email" name="email" required maxlength="50"><br><br>
+
+            <label for="nic">NIC Number</label>
+            <input type="text" id="nic" name="nic" required maxlength="12"><br><br>
+            <center><button type="submit" name="enter">Enter</button></center>
+        </form>
+    </div>
+</body>
+</html>
